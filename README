@@ -540,6 +540,9 @@ None were found.
 See READWIN.txt for information about running the tests under DOS or
 Windows.
 
+Changes for 2019 include the following:
+
+1. Add tests.init.sh to generate tests.init file.
 
 Changes for 2004 include the following:
 

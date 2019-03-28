@@ -1,4 +1,5 @@
 */*.o
+tests.init
 basic/test1
 basic/test2
 basic/test3

@@ -7,11 +7,13 @@
 # 'make dist DESTDIR=path'	copies sources to path
 # 'make tar DESTDIR=path'       runs make dist and then packs the directory 
 # 'make rpm DESTDIR=path'       runs make tar and runs rpmbuild -ta on it 
-	
 
 DESTDIR=/no/such/path
 COPYFILES=runtests tests.init server domount.c README READWIN.txt Testitems \
 	getopt.c tests.h unixdos.h cthon04.spec
+
+# generate tests.init file
+$(shell ./tests.init.sh)
 
 include tests.init
 
@@ -73,3 +75,7 @@ rpm: tar
 mknewdirs:
 	-mkdir $(DESTDIR)/basic $(DESTDIR)/general $(DESTDIR)/special \
 	       $(DESTDIR)/tools $(DESTDIR)/lock
+
+.PHONY: tests.init
+tests.init:
+	sh ./tests.init.sh
