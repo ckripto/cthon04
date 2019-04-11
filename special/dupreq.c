@@ -17,6 +17,7 @@
 #include <fcntl.h>
 #endif
 
+int
 main(argc, argv)
 	int argc;
 	char *argv[];

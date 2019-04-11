@@ -18,7 +18,9 @@
 
 #include "../tests.h"
 
+int
 main(argc,argv)
+int	argc;
 char **argv;
 {
 	int n;

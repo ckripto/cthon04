@@ -26,6 +26,7 @@
 
 static int stats = 0;
 
+int
 main(argc, argv)
 	int argc;
 	char *argv[];

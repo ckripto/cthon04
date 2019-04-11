@@ -65,6 +65,7 @@ usage()
 	fprintf(stdout, "          i    Ignore non-test files dir entries\n");
 }
 
+int
 main(argc, argv)
 	int argc;
 	char *argv[];

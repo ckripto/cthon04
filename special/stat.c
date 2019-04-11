@@ -34,6 +34,7 @@ static int stats = 0;
 
 static void statit ARGS_((char *));
 
+int
 main(argc, argv)
 	int argc;
 	char *argv[];

@@ -31,6 +31,7 @@ static DIR * my_opendir ARGS_((char *name));
 static void print ARGS_((char *));
 static struct dirent *my_readdir ARGS_((DIR *dirp));
 
+int
 main(argc, argv)
 	int argc;
 	char *argv[];

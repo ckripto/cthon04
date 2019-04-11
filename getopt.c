@@ -97,7 +97,9 @@ char	**argv, *opts;
 
 #include	<stdio.h>
 
+int
 main(ac, av)
+int	ac;
 char	**av;
 {
 	register int	i;

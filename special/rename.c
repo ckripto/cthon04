@@ -21,6 +21,7 @@
 #endif
 #endif /* DOSorWIN32 */
 
+int
 main(argc, argv)
 	int argc;
 	char *argv[];

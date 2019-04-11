@@ -65,6 +65,7 @@ usage()
 	fprintf(stdout, "          n    Suppress test directory create operations\n");
 }
 
+int
 main(argc, argv)
 	int argc;
 	char *argv[];

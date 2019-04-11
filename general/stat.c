@@ -24,6 +24,7 @@ char	*Prog, *File;
 int	getattfmt();
 void	prtstat();
 
+int
 main(argc, argv)
 	int	argc;
 	char	*argv[];

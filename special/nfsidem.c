@@ -53,6 +53,7 @@ static char TBAR[MAXPATHLEN];
 static char LBAR[MAXPATHLEN];
 static char str[STRCHARS];
 
+int
 main(ac,av)
 	int ac;
 	char *av[];

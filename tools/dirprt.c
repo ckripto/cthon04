@@ -34,6 +34,7 @@
 static DIR *my_opendir ARGS_((char *));
 static void print ARGS_((char *));
 
+int
 main(argc, argv)
 	int argc;
 	char *argv[];

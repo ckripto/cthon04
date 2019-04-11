@@ -14,6 +14,7 @@
 #include <unistd.h>
 #endif /* DOSorWIN32 */
 
+int
 main()
 {
 	char buffer[8192];
