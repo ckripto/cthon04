@@ -19,7 +19,11 @@
 #endif
 
 #include <sys/types.h>
+#include <sys/types.h>
 #include <sys/timeb.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+
 
 #ifdef DOSorWIN32
 #include <time.h>

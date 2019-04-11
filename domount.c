@@ -9,7 +9,10 @@
 
 #include <stdio.h>
 #ifdef LINUX
+#include <sys/types.h>
 #include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
 #endif
 
 int

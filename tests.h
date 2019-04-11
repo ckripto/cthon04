@@ -66,6 +66,8 @@ extern void rmdirtree ARGS_((int lev, int files, int dirs, char *fname,
 extern void testdir ARGS_((char *dir));
 extern int mtestdir ARGS_((char *dir));
 extern void complete ARGS_((void));
+extern int unix_mkdir(char*, mode_t);
+extern int unix_chdir(char *);
 
 #ifdef NEED_STRERROR
 extern char *strerror ARGS_((int));
