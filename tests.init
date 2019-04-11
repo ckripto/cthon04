@@ -3,7 +3,7 @@
 #
 MNTOPTIONS="rw,hard,intr"
 # Dummy MNTPOINT definition; should get overriden by server script.
-MNTPOINT="/mnt"
+MNTPOINT="/mnt/nfs"
 
 SERVER=""
 SERVPATH="/server"

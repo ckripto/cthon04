@@ -13,7 +13,7 @@ COPYFILES=runtests tests.init server domount.c README READWIN.txt Testitems \
 	getopt.c tests.h unixdos.h cthon04.spec
 
 # generate tests.init file
-$(shell ./tests.init.sh)
+$(shell ./tests.init.sh $(FSTYPE) $(OS))
 
 include tests.init
 
@@ -78,4 +78,4 @@ mknewdirs:
 
 .PHONY: tests.init
 tests.init:
-	sh ./tests.init.sh
+	sh ./tests.init.sh $(FSTYPE) $(OS)

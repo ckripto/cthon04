@@ -1,16 +1,16 @@
 #!/bin/sh
 
-OS=${1:-Linux}
-FSTYPE=$${2:-nfs}
+FSTYPE=${1:-nfs}
+OS=${2:-`uname -s`}
 Initfile=tests.init
 
-cat <<\EOF >$Initfile
+cat <<EOF >$Initfile
 #
 #       @(#)tests.init	1.26 2003/12/30 Connectathon testsuite
 #
 MNTOPTIONS="rw,hard,intr"
 # Dummy MNTPOINT definition; should get overriden by server script.
-MNTPOINT="/mnt"
+MNTPOINT="/mnt/$FSTYPE"
 
 SERVER=""
 SERVPATH="/server"
@@ -38,7 +38,7 @@ MOUNTCMD='./domount -F nfs -o $MNTOPTIONS $SERVER\:$SERVPATH $MNTPOINT'
 CFSMOUNTCMD='./domount -F cachefs -o $MNTOPTIONS $SERVER\:$SERVPATH $MNTPOINT'
 EOF
 ;;
-BSD|SunOS4.x|Tru64UNIX|HPUX|Linux|AIX|MacOSX)
+*BSD|SunOS4.x|Tru64UNIX|HPUX|Linux|AIX|MacOSX)
 cat <<\EOF >>$Initfile
 # Use this mount command if using:
 #	BSD
@@ -89,7 +89,7 @@ DASHN=
 BLC=\\c
 EOF
 ;;
-BSD|SunOS4.x|Linux|Tru64UNIX|MacOSX)
+*BSD|SunOS4.x|Linux|Tru64UNIX|MacOSX)
 cat <<\EOF >>$Initfile
 # Use the next two lines if using:
 #	BSD
@@ -105,7 +105,7 @@ esac
 
 # set PATH
 echo >>$Initfile
-echo -e "# set PATH" >>$Initfile
+echo "# set PATH" >>$Initfile
 case $OS in
 Solaris2.x)
 cat <<\EOF >>$Initfile
@@ -129,7 +129,7 @@ PATH=/bin:/usr/bin:/etc:/usr/etc:/usr/local/bin:/usr/contrib/bin:.
 EOF
 ;;
 
-BSD|SunOS4.x)
+*BSD|SunOS4.x)
 cat <<\EOF >>$Initfile
 # Use this path for:
 #	BSD
@@ -211,10 +211,10 @@ LIBS=`echo -lrpc -lsocket`
 EOF
 ;;
 
-BSD)
+*BSD)
 cat <<\EOF >>$Initfile
 # Use with BSD systems.
-CC=gcc
+CC=cc
 CFLAGS=`echo -Duse_directs -DBSD`
 MOUNT=/sbin/mount
 UMOUNT=/sbin/umount
@@ -375,7 +375,10 @@ LIBS=`echo -lnsl`
 
 EOF
 
-if [ glibc-2.26 = `{ rpm -qf /etc/ld.so.conf; echo glibc-2.26; } | sort | head -n1` ]; then
+glibc_version_base=2.26
+glibc_version_current=`ldd --version|sed -n '1{s/.* //;p}'`
+glibc_version_older=`{ echo $glibc_version_base; echo $glibc_version_current; } | sort | head -n1`
+if [ "$glibc_version_older" = "$glibc_version_base" ]; then
 	cat <<\EOF >>$Initfile
 # Use with Linux glibc > 2.26
 CFLAGS=`echo -DLINUX -DHAVE_SOCKLEN_T -DGLIBC=22 -DMMAP -DSTDARG`
@@ -386,5 +389,4 @@ fi
 
 ;;
 esac
-
 
